@@ -35,7 +35,6 @@ class AccountPayment(models.Model):
                 'amount': payment.amount if payment.payment_type in ['inbound', 'transfer'] else -payment.amount,
                 'date': payment.date,
                 'journal_id': bank_journal.id,
-                'accounting_date': payment.date,
             })
 
         return res
