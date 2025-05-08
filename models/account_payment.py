@@ -24,7 +24,6 @@ class AccountPayment(models.Model):
                 statement = self.env['account.bank.statement'].create({
                     'journal_id': bank_journal.id,
                     'date': payment.date,
-                    'name': f"{payment.name}",
                 })
 
             # Buat baris bank statement
