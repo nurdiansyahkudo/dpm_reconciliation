@@ -18,7 +18,7 @@ class AccountPayment(models.Model):
             statement = self.env['account.bank.statement'].search([
                 ('journal_id', '=', bank_journal.id),
                 ('date', '=', payment.date),
-                ('state', '=', 'posted'),
+                ('status', '=', 'posted'),
             ], limit=1)
 
             if not statement:
