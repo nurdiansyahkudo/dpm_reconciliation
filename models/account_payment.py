@@ -18,14 +18,13 @@ class AccountPayment(models.Model):
             statement = self.env['account.bank.statement'].search([
                 ('journal_id', '=', bank_journal.id),
                 ('date', '=', payment.date),
-                ('status', '=', 'posted'),
             ], limit=1)
 
             if not statement:
                 statement = self.env['account.bank.statement'].create({
                     'journal_id': bank_journal.id,
                     'date': payment.date,
-                    'name': f"Auto Statement {payment.name}",
+                    'name': f"{payment.name}",
                 })
 
             # Buat baris bank statement
