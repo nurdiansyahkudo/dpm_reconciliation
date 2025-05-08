@@ -14,11 +14,11 @@ class AccountPayment(models.Model):
 
             bank_journal = payment.journal_id
 
-            # Cari atau buat bank statement yang masih draft untuk hari ini
+            # Cari atau buat bank statement yang masih draft
             statement = self.env['account.bank.statement'].search([
                 ('journal_id', '=', bank_journal.id),
                 ('date', '=', payment.date),
-                ('state', '=', 'open'),
+                ('state', '=', 'posted'),
             ], limit=1)
 
             if not statement:
